@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planate Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  {% load static %}
+  <style>
+    body {
+      background-image: url("{% static 'wplanate/BGHOME.png' %}");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .mercurybtn {
+      background-color: brown;
+    }
+
+    .moonbtn {
+      background-color: brown;
+    }
+
+    .marsbtn {
+      background-color: brown;
+    }
+
+    .venusbtn {
+      background-color: brown;
+    }
+
+    .saturnbtn {
+      background-color: brown;
+    }
+
+    .jupiterbtn {
+      background-color: brown;
+    }
+
+    .neptunebtn {
+      background-color: brown;
+    }
+
+    .uranusbtn {
+      background-color: brown;
+    }
+
+    .plutobtn {
+      background-color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  {% url 'about' as about_url %}
+  {% url 'contact' as contact_url %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">PlanetCalc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Home</a>
+          <li class="nav-item {% if request.path == about_url %} active {%endif%}">
+            <a class="nav-link" href="{{about_url}}">About Website</a>
+          </li>
+          <li class="nav-item {% if request.path == contact_url %} active {%endif%}">
+            <a class="nav-link" href="{{contact_url}}">Contact</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  {% load static %}
+
+  <form action="result/" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" name="text" class="form-label badge text-wrap"
+          style="background-color: rgb(79, 16, 16); color: aliceblue; position: absolute; top: 5.4cm; left: 13.2cm; height: 1.5cm; width: 7cm;">
+          <H5>Enter your weight here in KG and select the planate</H5>
+        </label>
+        <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="9"
+          style="position: absolute; height: 88px; width: 200px;top: 7.5cm; ;left: 14.2cm; background-color: aliceblue;"></textarea>
+
+      </div>
+    </div>
+    <img src="{% static 'wplanate/mercury.gif' %}" style="position: relative; left: 5cm; top:0.2cm;">
+    <button class="mercurybtn btn-primary" name="mercury" type="submit"
+      style="position: relative; left: 2.6cm; top: 2.2cm">mercury</button>
+
+    <img src="{% static 'wplanate/moon.gif' %}" style="position: relative; left: 0.3cm; top: 5.3cm;">
+    <button class="moonbtn btn-primary" name="moon" type="submit" style="position: relative; left: -1.9cm; top: 7.2cm">
+      moon</button>
+
+    <img src="{% static 'wplanate/mars.gif' %}" type="submit" style="position: relative; top: 0.3cm; left: 17cm;">
+    <button class="marsbtn btn-primary" name="mars" type="submit"
+      style="position: relative; left: 14.9cm; top: 2.3cm">Mars</button>
+
+    <img src="{% static 'wplanate/venus.gif' %}" style="position: relative; top: 5.2cm; left: 13cm;">
+    <button class="venusbtn btn-primary" name="venus" type="submit"
+      style="position: relative; left: 10.8cm; top: 7.1cm">Venus</button>
+
+    <img src="{% static 'wplanate/saturn.gif' %}" style="position: relative; top: 10.6cm; left: -1.8cm;">
+    <button class="saturnbtn btn-primary" name="saturn" type="submit"
+      style="position: relative; left: -4.1cm; top: 12.5cm">Saturn</button>
+
+    <img src="{% static 'wplanate/jupiter.gif' %}" style="position: relative ; top:10.5cm ; left: 0.5cm;">
+    <button class="jupiterbtn btn-primary" name="jupiter" type="submit"
+      style="position: relative; left: -1.8cm; top: 12.5cm">Jupiter</button>
+
+    <img src="{% static 'wplanate/neptune.gif' %}" style="position: relative; top: 10.5cm; left:3cm ;">
+    <button class="neptunebtn btn-primary" name="neptune" type="submit"
+      style="position: relative; left: 0.6cm; top: 12.5cm">Neptune</button>
+
+    <img src="{% static 'wplanate/uranus.gif' %}" style="position: relative; top: 10.5cm; left: -22.8cm;">
+    <button class="uranusbtn btn-primary" name="uranus" type="submit"
+      style="position: relative; left: 9.5cm; top: 9.9cm">Uranus</button>
+
+    <img src="{% static 'wplanate/pluto.gif' %}" style="position: relative; top: 7.9cm; left: 1cm;">
+    <button class="plutobtn btn-primary" name="pluto" type="submit"
+      style="position: relative; left: -1cm; top: 9.9cm">Pluto</button>
+
+  </form>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
